@@ -78,3 +78,11 @@ def register_view(request, *args, **kwargs):
         form = UserCreationForm()
 
     return render(request, 'user_create.html', context={'form': form})
+
+class UserDetailView(DetailView):
+
+    model = User
+
+    template_name = 'user_detail.html'
+
+    context_object_name = 'user_obj'
