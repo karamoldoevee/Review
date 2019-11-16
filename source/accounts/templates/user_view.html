@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Пользователи{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>Пользователи:</h1>
+    <hr/>
+        {% if is_paginated %}
+
+       {% include 'partial/pagination.html' %}
+
+   {% endif %}
+    {% for user in users %}
+        <h2><a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></h2>
+        <hr/>
+    {% endfor %}
+        {% if is_paginated %}
+
+       {% include 'partial/pagination.html' %}
+
+   {% endif %}
+{% endblock %}
