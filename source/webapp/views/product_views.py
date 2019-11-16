@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 from webapp.forms import SimpleSearchForm
 from webapp.models import Product
 
@@ -62,25 +64,29 @@ class ProductView(DetailView):
     model = Product
     template_name = 'product/view.html'
 
-class ProductCreateView(CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
     model = Product
     template_name = 'product/add.html'
     fields = ('name', 'category', 'description', 'image')
+    permission_required = 'webapp.add_product'
+    permission_denied_message = "Доступ запрещён"
 
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'product/change.html'
     fields = ('name', 'category', 'description', 'image')
     context_object_name = 'product'
+    permission_required = 'webapp.change_product'
+    permission_denied_message = "Доступ запрещён"
 
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin,DeleteView):
 
     template_name = 'product/delete.html'
 
@@ -89,6 +95,10 @@ class ProductDeleteView(DeleteView):
     context_object_name = 'product'
 
     success_url = reverse_lazy('webapp:index')
+
+    permission_required = 'webapp.delete_product'
+
+    permission_denied_message = "Доступ запрещён"
 
 
 

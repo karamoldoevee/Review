@@ -22,7 +22,7 @@
             <img src="{{ product.image.url }}" width="200" height="200"  alt="{{ product.name }}">
             <p>{{ product.description }}></p>
         {% else %}
-            <img src="{% static "images/adam.jpg" %}" alt="Заглушка" >
+            <img src="{% static "images/nophoto.png" %}" width="200" height="200" alt="Заглушка" >
         {% endif %}
             <a href="{% url 'webapp:product_view' product.pk %}">Подробнее.</a>
             <a href="{% url 'webapp:product_change' product.pk %}">Обновить</a>

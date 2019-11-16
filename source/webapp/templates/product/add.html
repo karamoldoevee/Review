@@ -2,8 +2,12 @@
 {% block title %}Добавить Продукт{% endblock %}
 {% block content %}
     <h1 class="text-center">Добавить Продукт</h1>
-    <form action="{% url "webapp:product_add" %}" method="POST" enctype="multipart/form-data">
-        {% include 'partial/form.html' %}
-        <input type="submit" value="Создать" class="btn btn-primary">
-    </form>
+    {% if perms.webapp.add_product %}
+        <form action="{% url "webapp:product_add" %}" method="POST" enctype="multipart/form-data">
+            {% include 'partial/form.html' %}
+            <input type="submit" value="Создать" class="btn btn-primary">
+        </form>
+    {% else %}
+        {% url 'webapp:not_allowed' product.pk %}
+    {% endif %}
 {% endblock %}

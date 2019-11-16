@@ -2,8 +2,12 @@
 {% block title %}Обновить Продукт{% endblock %}
 {% block content %}
     <h1 class="text-center">Обновить Продукт</h1>
-    <form action="{% url "webapp:product_change" product.pk %}" method="POST" enctype="multipart/form-data">
-        {% include 'partial/form.html' %}
-        <input type="submit" value="Обновить" class="btn btn-primary">
-    </form>
+    {% if perms.webapp.change_product %}
+        <form action="{% url "webapp:product_change" product.pk %}" method="POST" enctype="multipart/form-data">
+            {% include 'partial/form.html' %}
+            <input type="submit" value="Обновить" class="btn btn-primary">
+        </form>
+    {% else %}
+        {% url 'webapp:not_allowed' product.pk %}
+    {% endif %}
 {% endblock %}

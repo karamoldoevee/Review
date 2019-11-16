@@ -7,10 +7,14 @@
 {% endblock %}
 
 {% block content %}
-        <h1>Вы уверены что хотите удалить "{{ product.name }}"?</h1>
-        <form method="POST" action="{% url 'webapp:product_delete' product.pk %}" class="text-center">
-            {% csrf_token %}
-            <p><input type="submit" value="Да"></p>
-            <p><a href="{% url 'webapp:product_view' product.pk %}">Нет</a></p>
-    </form>
+        {% if perms.webapp.delete_product %}
+            <h1>Вы уверены что хотите удалить "{{ product.name }}"?</h1>
+            <form method="POST" action="{% url 'webapp:product_delete' product.pk %}" class="text-center">
+                {% csrf_token %}
+                <p><input type="submit" value="Да"></p>
+                <p><a href="{% url 'webapp:product_view' product.pk %}">Нет</a></p>
+            </form>
+        {% else %}
+            {% url 'webapp:not_allowed' product.pk %}
+        {% endif %}
 {% endblock %}

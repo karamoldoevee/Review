@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block menu %}
@@ -9,7 +9,11 @@
 
 {% block content %}
     <h1>{{ product.name }}</h1>
-    <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
+    {% if product.image %}
+        <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
+    {% else %}
+        <img src="{% static "images/nophoto.png" %}" width="200" height="200" alt="Заглушка" >
+    {% endif %}
     <div class="pre-1">
         <p>{{ product.description }}</p>
         <p>Категория: {{ product.category }}</p>
@@ -30,6 +34,7 @@
                         <a href="{% url 'webapp:review_change' review.pk %}">Обновить</a>
                         <a href="{% url 'webapp:review_delete' review.pk %}">Удалить</a>
                 </p>
+            <hr>
             </div>
         {% empty %}
             <p>Нет отзывов</p>

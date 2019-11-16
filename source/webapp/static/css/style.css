@@ -137,22 +137,3 @@ h1 {
 img{
     width:350px;
 }
-.review-list{
-    width: 1000px;
-    height: 200px;
-    box-shadow: 0 0 0 3px lightblue,
-                0 0 0 6px lightblue,
-                3px 0 0 6px lightblue;
-    padding: 30px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-.pre-1{
-    width: 1000px;
-    height: 200px;
-    box-shadow: 0 0 0 3px lightgreen,
-                0 0 0 6px lightgreen,
-                3px 0 0 6px lightgreen;
-    padding: 30px;
-    margin: 20px;
-}

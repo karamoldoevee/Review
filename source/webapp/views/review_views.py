@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import CreateView, ListView, \
@@ -15,7 +16,7 @@ class ReviewListView(ListView):
     paginate_orphans = 3
 
 
-class ReviewForProductCreateView(CreateView):
+class ReviewForProductCreateView(LoginRequiredMixin, CreateView):
     model = Review
     template_name = 'review/create.html'
     form_class = ProductReviewForm
@@ -36,7 +37,7 @@ class ReviewForProductCreateView(CreateView):
         return get_object_or_404(Product, pk=product_pk)
 
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     template_name = 'review/create.html'
     form_class = ReviewForm
@@ -54,11 +55,13 @@ class ReviewCreateView(CreateView):
         return reverse('webapp:product_view', kwargs={'pk': self.object.product.pk})
 
 
-class ReviewtUpdateView(UpdateView):
+class ReviewtUpdateView(PermissionRequiredMixin, UpdateView):
     model = Review
     template_name = 'review/update.html'
     form_class = ProductReviewForm
     context_object_name = 'review'
+    permission_required = 'webapp.change_review'
+    permission_denied_message = "Доступ запрещён"
 
     def test_func(self):
         review = self.get_object()
@@ -69,12 +72,20 @@ class ReviewtUpdateView(UpdateView):
         self.object = self.get_object()
         return super().dispatch(request, *args, **kwargs)
 
+    def has_permission(self):
+        return super().has_permission() or self.review_author(self.request.user)
+
+    def review_author(self, user):
+        return self.get_object().author == user
+
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.product.pk})
 
 
-class ReviewtDeleteView(DeleteView):
+class ReviewtDeleteView(PermissionRequiredMixin, DeleteView):
     model = Review
+    permission_required = 'webapp.delete_review'
+    permission_denied_message = "Доступ запрещён"
 
     def test_func(self):
         review = self.get_object()
@@ -87,6 +98,12 @@ class ReviewtDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+    def has_permission(self):
+        return super().has_permission() or self.review_author(self.request.user)
+
+    def review_author(self, user):
+        return self.get_object().author == user
 
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.product.pk})

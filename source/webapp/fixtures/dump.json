@@ -86,72 +86,54 @@
     "name": "Ear 3",
     "category": "ER",
     "description": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"",
-    "image": "product_images/ear_tri_jYiRaQV.jpg"
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$AbAXGXwD6WTZ$yN/eEgb5r01YRJ536P7DA8WMH6INWFyqRGW/798phio=",
-    "last_login": "2019-11-16T09:01:16.834Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "karamoldoevee@gmail.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2019-11-16T09:01:04.659Z",
-    "groups": [],
-    "user_permissions": []
+    "image": "product_images/ear_tri_Rvnnr9x.jpg"
   }
 },
 {
   "model": "webapp.review",
-  "pk": 1,
+  "pk": 10,
   "fields": {
-    "author": 1,
-    "product": 1,
+    "author": 2,
+    "product": 9,
     "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
     "raiting": 5
   }
 },
 {
   "model": "webapp.review",
-  "pk": 2,
+  "pk": 11,
   "fields": {
-    "author": 1,
-    "product": 2,
-    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
-    "raiting": 4
-  }
-},
-{
-  "model": "webapp.review",
-  "pk": 3,
-  "fields": {
-    "author": 1,
-    "product": 3,
-    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
-    "raiting": 1
-  }
-},
-{
-  "model": "webapp.review",
-  "pk": 4,
-  "fields": {
-    "author": 1,
-    "product": 4,
+    "author": 2,
+    "product": 8,
     "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
     "raiting": 5
   }
 },
 {
   "model": "webapp.review",
-  "pk": 5,
+  "pk": 12,
   "fields": {
-    "author": 1,
+    "author": 2,
+    "product": 7,
+    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "raiting": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 13,
+  "fields": {
+    "author": 2,
+    "product": 6,
+    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "raiting": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 14,
+  "fields": {
+    "author": 2,
     "product": 5,
     "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
     "raiting": 5
@@ -159,42 +141,72 @@
 },
 {
   "model": "webapp.review",
-  "pk": 6,
+  "pk": 15,
   "fields": {
-    "author": 1,
-    "product": 6,
+    "author": 2,
+    "product": 4,
     "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "raiting": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 16,
+  "fields": {
+    "author": 2,
+    "product": 3,
+    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "raiting": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 17,
+  "fields": {
+    "author": 2,
+    "product": 2,
+    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "raiting": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 19,
+  "fields": {
+    "author": 2,
+    "product": 1,
+    "text": "ffsf\u043f\u044b\u0440\u043f\u044b\u043f\u044b\u043f\u044b\u043f\u044b\u044b\u044b\u043f",
     "raiting": 4
   }
 },
 {
   "model": "webapp.review",
-  "pk": 7,
+  "pk": 22,
   "fields": {
-    "author": 1,
-    "product": 7,
-    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
-    "raiting": 4
+    "author": 4,
+    "product": 1,
+    "text": "dada",
+    "raiting": 2
   }
 },
 {
   "model": "webapp.review",
-  "pk": 8,
+  "pk": 25,
   "fields": {
-    "author": 1,
-    "product": 8,
-    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
-    "raiting": 1
-  }
-},
-{
-  "model": "webapp.review",
-  "pk": 9,
-  "fields": {
-    "author": 1,
-    "product": 9,
-    "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu",
+    "author": 9,
+    "product": 1,
+    "text": "sff",
     "raiting": 3
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 28,
+  "fields": {
+    "author": 10,
+    "product": 1,
+    "text": "adada",
+    "raiting": 1
   }
 }
 ]
