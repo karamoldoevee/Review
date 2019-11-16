@@ -33,8 +33,13 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+                {% if request.user.is_authenticated %}
+                    <li class="menu-right"><a href="{% url 'accounts:logout' %}" class="nav-link">Выход</a></li>
+{#                    <li class="menu-right">Привет, <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>!</li>#}
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Войти</a>
+                  <a class="nav-item nav-link" href="#">Регистрация</a>
+                {% endif %}
             </div>
           </div>
         </div>
