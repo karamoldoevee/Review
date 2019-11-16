@@ -1,11 +1,10 @@
 from django import forms
 
 from webapp.models import Product, Review
-from django.forms import Select
 
 
-class IssueForm(forms.ModelForm):
-    assigned_to = forms.ModelChoiceField(widget=Select, required=False, empty_label=None, queryset=None)
+
+class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
@@ -13,6 +12,17 @@ class IssueForm(forms.ModelForm):
 
     def clean_summary(self):
         title = self.cleaned_data['name']
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        exclude = ['author']
+
+
+class ProductReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text', 'raiting']
 
 class SimpleSearchForm(forms.Form):
 

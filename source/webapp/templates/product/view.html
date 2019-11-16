@@ -14,5 +14,31 @@
     <div class="pre">{{ product.image }}</div>
     <hr>
     <div class="pre">{{ product.category }}</div>
-    <hr>
+    <hr/>
+    <h3>Comments:</h3>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    <div class="review-list">
+        {% for review in product.review.all %}
+            <div class="review">
+                <p><strong>Автор:</strong> {{ review.author }}
+                <p><strong>Почта:</strong> {{ review.author.email }}
+                <div class="pre">{{ review.text }}</div>
+                <div class="pre" style="margin-top: 10px;"><strong>Рейтинг</strong> {{ review.raiting }}</div>
+                <p class="comment-links">
+                        <a href="{% url 'webapp:review_change' review.pk %}">Обновить</a>
+                        <a href="{% url 'webapp:review_delete' review.pk %}">Удалить</a>
+                </p>
+            </div>
+        {% empty %}
+            <p>Нет отзывов</p>
+        {% endfor %}
+    </div>
+    <form action="{% url 'webapp:product_review_add' product.pk %}" method="POST" id="add_comment">
+        {% include 'partial/form.html' with button_text='Добавить Отзыв' %}
+    </form>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}
