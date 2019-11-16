@@ -4,11 +4,7 @@
 
 {% block content %}
     <h1>Обновить Рейтингt</h1>
-    {% if perms.webapp.change_review  %}
         <form method="POST" action="{% url 'webapp:review_change' review.pk %}">
             {% include 'partial/form.html' with button_text="Обновить" %}
         </form>
-{#    {% else %}#}
-{#        {% url 'webapp:not_allowed' review.pk %}#}
-    {% endif %}
 {% endblock %}
