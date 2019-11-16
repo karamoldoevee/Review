@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Обновить Продукт{% endblock %}
+{% block content %}
+    <h1 class="text-center">Обновить Продукт</h1>
+    <form action="{% url "webapp:product_change" product.pk %}" method="POST" enctype="multipart/form-data">
+        {% include 'partial/form.html' %}
+        <input type="submit" value="Обновить" class="btn btn-primary">
+    </form>
+{% endblock %}

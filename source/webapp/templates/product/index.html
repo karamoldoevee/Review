@@ -1,3 +1,36 @@
+
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% block menu %}
+    {% if request.user.is_authenticated %}
+    <li><a href ="{% url 'webapp:product_add' %}">Добавить Продукт</a></li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-{%  endblock content %}
+    <h1>Продукты:</h1>
+    <hr/>
+{#    {% include 'partial/simple_search.html' %}#}
+    {% if is_paginated %}
+
+       {% include 'partial/pagination.html' %}
+
+   {% endif %}
+    {% for product in products %}
+        <h2>{{ product.name }}</h2>
+        {% if product.image %}
+            <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
+        {% else %}
+            <img src="{% static "images/adam.jpg" %}" alt="Заглушка" >
+        {% endif %}
+            <a href="{% url 'webapp:product_view' product.pk %}">Подробнее.</a>
+            <a href="{% url 'webapp:product_change' product.pk %}">Обновить</a>
+            <a href="{% url "webapp:product_delete" product.pk %}">Удалить</a>
+        <hr/>
+    {% endfor %}
+    {% if is_paginated %}
+
+       {% include 'partial/pagination.html' %}
+
+   {% endif %}
+{% endblock %}

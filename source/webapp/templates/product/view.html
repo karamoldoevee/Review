@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:product_change' product.pk %}">Обновить</a></li>
+    <li><a href="{% url 'webapp:product_delete' product.pk %}">Удалить</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
+    <div class="pre">{{ product.description }}</div>
+    <div class="pre">{{ product.image }}</div>
+    <hr>
+    <div class="pre">{{ product.category }}</div>
+    <hr>
+{% endblock %}

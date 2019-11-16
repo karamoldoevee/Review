@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Удалить Продукт{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:product_view' product.pk %}">Подробнее</a></li>
+{% endblock %}
+
+{% block content %}
+        <h1>Вы уверены что хотите удалить "{{ product.name }}"?</h1>
+        <form method="POST" action="{% url 'webapp:product_delete' product.pk %}" class="text-center">
+            {% csrf_token %}
+            <p><input type="submit" value="Да"></p>
+            <p><a href="{% url 'webapp:product_view' product.pk %}">Нет</a></p>
+    </form>
+{% endblock %}

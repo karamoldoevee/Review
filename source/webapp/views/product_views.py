@@ -12,9 +12,8 @@ from webapp.models import Product
 class IndexView(ListView):
     model = Product
     template_name = 'product/index.html'
+    context_object_name = 'products'
 
-    def get_queryset(self):
-        return Product.objects.filter(in_order=True)
 
 class ProductView(DetailView):
     model = Product
@@ -26,7 +25,7 @@ class ProductCreateView(CreateView):
     fields = ('name', 'category', 'description', 'image')
 
     def get_success_url(self):
-        return reverse('webapp:product_detail', kwargs={'pk': self.object.pk})
+        return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
 class ProductUpdateView(UpdateView):
     model = Product
@@ -35,7 +34,7 @@ class ProductUpdateView(UpdateView):
     context_object_name = 'product'
 
     def get_success_url(self):
-        return reverse('webapp:product_detail', kwargs={'pk': self.object.pk})
+        return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
 class ProductDeleteView(DeleteView):
     model = Product
