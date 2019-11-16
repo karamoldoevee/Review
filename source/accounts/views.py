@@ -119,3 +119,16 @@ class UserPasswordChangeView(UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:login')
+
+
+class UserView(ListView):
+    template_name = 'user_view.html'
+
+    context_object_name = 'users'
+
+    paginate_by = 5
+
+    paginate_orphans = 1
+
+    def get_queryset(self):
+        return User.objects.all()
