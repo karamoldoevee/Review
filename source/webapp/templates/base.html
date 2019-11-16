@@ -1,55 +1,31 @@
- {% load static %}
-<!DOCTYPE html>
-<html lang="">
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
 <head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
-    {% if title %}
-        <title>Django Blog - {{ title }}</title>
-    {% else %}
-        <title>Django Blog</title>
-    {% endif %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Задача{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'index' %}">Review</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
-              <a class="nav-item nav-link" href="#">About</a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-                {% if request.user.is_authenticated %}
-                    <li class="menu-right"><a href="{% url 'accounts:logout' %}" class="nav-link">Выход</a></li>
-{#                    <li class="menu-right">Привет, <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>!</li>#}
-                {% else %}
-                  <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Войти</a>
-                  <a class="nav-item nav-link" href="#">Регистрация</a>
-                {% endif %}
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<nav class="navbar">
+    <div class="container">
+        <ul class="menu">
+            <li><a href="{% url 'webapp:index' %}">Главная страница</a></li>
+            {% if request.user.is_authenticated %}
+                <li class="menu-right"><a href="{% url 'accounts:logout' %}" class="nav-link">Выход</a></li>
+                <li class="menu-right">Привет, <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>!</li>
+            {% else %}
+                <li class="menu-right"><a href="{% url 'accounts:login' %}" class="nav-link">Вход</a></li>
+                <li class="menu-right"><a href="{% url 'accounts:create' %}" class="nav-link">Регистрация</a></li>
+            {% endif %}
+            {% block menu %}{% endblock %}
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
 </body>
-</html>

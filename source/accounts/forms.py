@@ -52,12 +52,6 @@ class UserChangeForm(forms.ModelForm):
 
     avatar = forms.ImageField(label='Аватар', required=False)
 
-    birth_date = forms.DateField(label='День рождения', input_formats=['%Y-%m-%d', '%d.%m.%Y'], required=False)
-
-    about_yourself = forms.CharField(widget=forms.Textarea, max_length=1000, label='О себе', required=False)
-
-    github_profile = forms.URLField(label='Профиль Гитхаб', required=False, max_length=250)
-
     def save(self, commit=True):
 
         user = super().save(commit)
@@ -93,9 +87,9 @@ class UserChangeForm(forms.ModelForm):
 
         model = User
 
-        fields = ['first_name', 'last_name', 'email', 'avatar', 'birth_date', 'about_yourself', 'github_profile']
+        fields = ['first_name', 'last_name', 'email', 'avatar']
 
-        profile_fields = ['avatar', 'birth_date', 'about_yourself', 'github_profile']
+        profile_fields = ['avatar']
 
         labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'Email'}
 

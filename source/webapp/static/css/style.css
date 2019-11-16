@@ -1,88 +1,139 @@
 body {
-  background: #fafafa;
-  color: #333333;
-  margin-top: 5rem;
+    background: lightcyan;
+    color: #222222;
+    font-family: Arial, sans-serif;
+    margin-top: 60px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+h1 {
+    text-align: center;
 }
 
-ul {
-  margin: 0;
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+.navbar {
+    display: block;
+    background: #6a7dff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 0;
+    box-sizing: border-box;
+    padding: 7px 30px;
 }
 
-.site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+.menu {
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    color: #fffee8;
 }
 
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+.menu li {
+    display: inline-block;
 }
 
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
+.menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    padding: 5px 15px;
 }
 
-.content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+.menu a:hover {
+    color: #ffc122;
+    text-decoration: underline;
 }
 
-.article-title {
-  color: #444444;
+.pre {
+    white-space: pre-wrap;
 }
 
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+.text-center {
+    text-align: center;
 }
 
-.article-content {
-  white-space: pre-line;
+.form-error {
+    color: red;
+    font-size: 12px;
+    margin: 5px 0 0 0
 }
 
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+.field-error {
+    border: solid 1px red;
+    box-shadow: red 0 0 3px;
 }
 
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+.pagination {
+
+   text-align: center;
+
 }
 
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+.pagination a, .pagination .page-disabled {
+
+   display: inline-block;
+
+   border: solid 1px #6a7ddd;
+
+   border-radius: 3px;
+
+   padding: 5px;
+
+   margin: 3px;
+
 }
 
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
+
+
+.pagination a {
+
+   background: #6a7ddd;
+
+   color: white;
+
 }
 
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
+
+
+.pagination a:hover {
+
+   background: #6a7dff;
+
+   text-decoration: underline;
+
 }
 
-.account-heading {
-  font-size: 2.5rem;
+
+
+.pagination .page-disabled {
+
+   background: #6a7dcc;
+
+   color: #dddddd
+
 }
 
-.account-h1{
-  text-align: center;
+.avatar {
+
+    display: inline-block;
+
+    float: left;
+
+    width: 250px;
+
+    height: auto;
+
+    margin-right: 20px;
+
+}
+img{
+    width:350px;
 }
