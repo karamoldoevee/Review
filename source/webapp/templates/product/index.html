@@ -19,7 +19,8 @@
     {% for product in products %}
         <h2>{{ product.name }}</h2>
         {% if product.image %}
-            <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
+            <img src="{{ product.image.url }}" width="200" height="200"  alt="{{ product.name }}">
+            <p>{{ product.description }}></p>
         {% else %}
             <img src="{% static "images/adam.jpg" %}" alt="Заглушка" >
         {% endif %}

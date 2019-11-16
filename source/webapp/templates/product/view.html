@@ -10,12 +10,12 @@
 {% block content %}
     <h1>{{ product.name }}</h1>
     <img class="product-image" src="{{ product.image.url }}" width="250" height="250" alt="{{ product.name }}">
-    <div class="pre">{{ product.description }}</div>
-    <div class="pre">{{ product.image }}</div>
-    <hr>
-    <div class="pre">{{ product.category }}</div>
+    <div class="pre-1">
+        <p>{{ product.description }}</p>
+        <p>Категория: {{ product.category }}</p>
+    </div>
     <hr/>
-    <h3>Comments:</h3>
+    <h3>Отзывы:</h3>
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
@@ -25,7 +25,7 @@
                 <p><strong>Автор:</strong> {{ review.author }}
                 <p><strong>Почта:</strong> {{ review.author.email }}
                 <div class="pre">{{ review.text }}</div>
-                <div class="pre" style="margin-top: 10px;"><strong>Рейтинг</strong> {{ review.raiting }}</div>
+                <div class="pre" style="margin-top: 10px;"><strong>Рейтинг:</strong> {{ review.raiting }}</div>
                 <p class="comment-links">
                         <a href="{% url 'webapp:review_change' review.pk %}">Обновить</a>
                         <a href="{% url 'webapp:review_delete' review.pk %}">Удалить</a>
