@@ -1,6 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.shortcuts import render, redirect, reverse
 
-from django.shortcuts import render, redirect
+from accounts.models import Profile
+from .forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.views.generic import DetailView, UpdateView, ListView
+from django.contrib.auth.models import User
 
 
 
@@ -42,8 +47,34 @@ def login_view(request):
 
     return render(request, 'registration/login.html', context=context)
 
+
 def logout_view(request):
 
     logout(request)
 
     return redirect('webapp:index')
+
+
+def register_view(request, *args, **kwargs):
+
+    if request.method == 'POST':
+
+        form = UserCreationForm(data=request.POST)
+
+        if form.is_valid():
+
+            user = form.save()
+
+            user.save()
+
+            Profile.objects.create(user=user)
+
+            login(request, user)
+
+            return redirect('webapp:index')
+
+    else:
+
+        form = UserCreationForm()
+
+    return render(request, 'user_create.html', context={'form': form})
