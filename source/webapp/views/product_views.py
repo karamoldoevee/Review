@@ -1,18 +1,61 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import reverse
+from webapp.forms import SimpleSearchForm
+from webapp.models import Product
 
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.models import Product
-
+from django.db.models import Q
+from django.utils.http import urlencode
 
 
 class IndexView(ListView):
     model = Product
     template_name = 'product/index.html'
     context_object_name = 'products'
+
+    paginate_by = 3
+
+    paginate_orphans = 1
+
+    def get(self, request, *args, **kwargs):
+        self.form = self.get_search_form()
+
+        self.search_value = self.get_search_value()
+
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+
+        context['form'] = self.form
+
+        if self.search_value:
+            context['query'] = urlencode({'search': self.search_value})
+
+        return context
+
+    def get_queryset(self):
+
+        queryset = super().get_queryset()
+
+        if self.search_value:
+            query = Q(name__icontains=self.search_value) | Q(category__icontains=self.search_value)
+
+            queryset = queryset.filter(query)
+
+        return queryset
+
+    def get_search_form(self):
+
+        return SimpleSearchForm(self.request.GET)
+
+    def get_search_value(self):
+
+        if self.form.is_valid():
+            return self.form.cleaned_data['search']
+
+        return None
 
 
 class ProductView(DetailView):
@@ -36,17 +79,16 @@ class ProductUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
+
 class ProductDeleteView(DeleteView):
-    model = Product
+
     template_name = 'product/delete.html'
-    success_url = reverse_lazy('webapp:index')
+
+    model = Product
+
     context_object_name = 'product'
 
-    def delete(self, request, *args, **kwargs):
-        product = self.object = self.get_object()
-        product.in_order = False
-        product.save()
-        return HttpResponseRedirect(self.get_success_url())
+    success_url = reverse_lazy('webapp:index')
 
 
 
